@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+## 贪吃蛇
 
-You can use the [editor on GitHub](https://github.com/zmf963/zmf963.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zmf963/zmf963.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<canvas id="canvas" width="400" height="400"></canvas>
+</head>
+<body>
+<script>
+window.onkeydown=((ctx,snake,food,direction,move,draw)=>((loop,newFood,timer)=>Array.from({length:400}).forEach((_e,i)=>draw(ctx,i,"black"))||(timer=setInterval(()=>loop(newFood)||clearInterval(timer)||console.log(timer)||alert('Game Over'),200))&&(e=>direction=snake[1]-snake[0]==(move=[-1,-20,1,20][(e||event).keyCode-37]||direction)?direction:move))((newFood)=>snake.unshift(move=snake[0]+direction)&&snake.indexOf(move,1)>0||move<0||move>399||direction==1&&move%20==0||direction==-1&&move%20==19?false:(draw(ctx,move,"green")||move==food?newFood()&draw(ctx,food,"red"):draw(ctx,snake.pop(),"Black"))!==[],()=>Array.from({length:8000}).some(e=>snake.indexOf(food=~~(Math.random()*400))===-1)))(document.getElementById('canvas').getContext('2d'),[42,41],43,1,null,(ctx,node,color)=>(ctx.fillStyle=color)&ctx.fillRect(node%20*20+1,~~(node/20)*20+1,18,18));
+</script>
+</body>
+</html>
